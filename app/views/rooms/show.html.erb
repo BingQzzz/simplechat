@@ -1,0 +1,16 @@
+<h2>Welcome to <%= @room.name %></h2>
+
+<% @messages.each do |m| %>
+<hr>
+<%= m.user.email %> : <%= m.content %>
+<hr>
+<% end %>
+
+<br>
+<br>
+
+<%= form_for [@room,@message] do |f| %>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+  <%= f.submit %>
+<% end %>

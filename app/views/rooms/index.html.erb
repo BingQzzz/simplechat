@@ -1,0 +1,16 @@
+<h2>Join the room and start the connection</h2>
+
+<% @rooms.each do |m| %>
+<hr>
+<%= link_to m.name, room_path(m) %>
+<hr>
+<% end %>
+
+<br>
+<br>
+
+<%= form_for @room do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
