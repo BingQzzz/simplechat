@@ -8,12 +8,13 @@ class MessagesController < ApplicationController
     @message.user = current_user
     @room = Room.find(params[:room_id])
     @message.room = @room
-    if @message.save
-      RoomsChannel.broadcast_to(@room, @message)
-    else
-      raise
-      render 'new'
-    end
+    @message.save
+    # if !@message.save
+    #   # RoomsChannel.broadcast_to(@room, @message)
+    #   # ActionCable.server.broadcast(@room, @message)
+    #   # render room_path(@room)
+    #   render 'new'
+    # end
   end
 
   private
