@@ -2,15 +2,19 @@
 
 <% @messages.each do |m| %>
 <hr>
-<%= m.user.email %> : <%= m.content %>
+<%= m.user.username %> : <%= m.content %>
 <hr>
 <% end %>
 
 <br>
 <br>
 
+
+
 <%= form_for [@room,@message] do |f| %>
   <%= f.label :content %>
   <%= f.text_field :content %>
   <%= f.submit %>
 <% end %>
+
+

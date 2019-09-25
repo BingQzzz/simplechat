@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
     @room = Room.find(params[:room_id])
     @message.room = @room
     if @message.save
-      redirect_to room_path(@room)
+      RoomsChannel.broadcast_to(@room, @message)
     else
       raise
       render 'new'
