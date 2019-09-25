@@ -7,6 +7,7 @@ consumer.subscriptions.create("RoomsChannel", {
     console.log(data)
     let body = document.getElementById('id')
     let node = document.createElement("p")
+    node.classList += ''
     node.innerHTML = data.message.content
     body.appendChild(node)
     // if (Rooms.permission === 'granted') {
