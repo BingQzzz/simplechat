@@ -2,15 +2,60 @@
 
 <% @messages.each do |m| %>
 <hr>
-<%= m.user.email %> : <%= m.content %>
+[<%= m.created_at.strftime("%I:%M %p") %>] <%= m.user.username %> : <%= m.content %>
+
 <hr>
 <% end %>
 
+<p id="id"></p>
 <br>
 <br>
+
 
 <%= form_for [@room,@message] do |f| %>
   <%= f.label :content %>
   <%= f.text_field :content %>
   <%= f.submit %>
 <% end %>
+
+<script>
+  // import consumer from "#{Rails.root}/app/javascript/channels/consumer"
+
+
+  function subscribe (room_id) {
+    console.log('subscribe', room_id)
+    consumer.subscriptions.create({ channel: "RoomsChannel", room: room_id })
+  }
+  // subscribe(<%= @room.id %>);
+
+    // scrollLastMessageIntoView();
+    // App.cable.subscriptions.create(
+    //   { channel: 'RoomsChannel', room: <%= @room.id %> },
+    //   {
+    //     received: (data) => {
+    //       console.log('receive')
+    //       if (data.current_user_id !== <%= current_user.id %>) {
+    //         const messagesContainer = document.querySelector('.messages');
+    //         messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
+    //         scrollLastMessageIntoView();
+    //       }
+    //     }
+    //   }
+    // )
+    // import consumer from "./consumer"
+// consumer.subscriptions.create({ channel: "RoomsChannel", room: <%= @room.id %> })
+
+    // consumer.subscriptions.create("RoomsChannel", {
+    //   connected() {
+    //     // Called when the subscription is ready for use on the server
+    //   },
+
+    //   disconnected() {
+    //     // Called when the subscription has been terminated by the server
+    //   },
+
+    //   received(data) {
+    //     // Called when there's incoming data on the websocket for this channel
+    //   }
+    // });
+  </script>
