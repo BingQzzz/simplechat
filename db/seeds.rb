@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+p '🐒 creating seeds....'
 3.times do
   u = User.create!(email: Faker::Internet.email,
                       password: '123456')
