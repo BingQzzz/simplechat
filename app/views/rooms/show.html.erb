@@ -1,13 +1,13 @@
 <h2>Welcome to <%= @room.name %></h2>
 
 <% @messages.each do |m| %>
-<hr>
-[<%= m.created_at.strftime("%I:%M %p") %>] <%= m.user.username %> : <%= m.content %>
-
-<hr>
+<!-- <hr> -->
+<p>[<%= m.created_at.strftime("%I:%M %p") %>] <%= m.user.username %> : <%= m.content %></p>
+<!-- <hr> -->
 <% end %>
 
 <p id="id"></p>
+
 <br>
 <br>
 
@@ -22,11 +22,11 @@
   // import consumer from "#{Rails.root}/app/javascript/channels/consumer"
 
 
-  function subscribe (room_id) {
-    console.log('subscribe', room_id)
-    consumer.subscriptions.create({ channel: "RoomsChannel", room: room_id })
-  }
-  // subscribe(<%= @room.id %>);
+  // function subscribe (room_id) {
+  //   console.log('subscribe', room_id)
+  //   consumer.subscriptions.create({ channel: "RoomsChannel", room: room_id })
+  // }
+  // // subscribe(<%= @room.id %>);
 
     // scrollLastMessageIntoView();
     // App.cable.subscriptions.create(

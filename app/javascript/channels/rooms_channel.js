@@ -1,14 +1,42 @@
+console.log('🐶🐶🐶🐶Reading rooms_channel.js....')
+
 import consumer from "./consumer"
+console.log('imported consumer from consumer.js in rooms_channel.js')
+console.log(consumer)
+// Consumer {}
 
 consumer.subscriptions.create("RoomsChannel", {
-  connected() {},
-  disconnected() {},
+  connected() {
+    console.log('receiving connected().')
+  },
+
+  disconnected() {
+    console.log('receiving disconnected.')
+  },
   received(data) {
+    console.log('receiving data....')
+    console.log(consumer)
+    console.log(consumer.subscriptions)
+    //array[1]
+
+    console.log("still inside data.......")
     console.log(data)
+    //{messages:{}, current_user_id: 7}
+
     let body = document.getElementById('id')
+    console.log(body)
     let node = document.createElement("p")
-    node.classList += ''
-    node.innerHTML = data.message.content
+    console.log(node)
+    // let hr = document.createElement('hr')
+    // console.log(hr)
+
+    // body.insertAdjacentHTML('beforeBegin', '<hr>');
+    // body.insertAdjacentHTML('afterEnd','<hr>');
+
+    // node.classList += ''
+
+    node.innerHTML = `[` + data.created_at + `] ` + data.current_user + ` : `+ data.message.content
+
     body.appendChild(node)
     // if (Rooms.permission === 'granted') {
     //   var title = 'Push message'
@@ -18,6 +46,8 @@ consumer.subscriptions.create("RoomsChannel", {
     // }
   }
 });
+
+console.log('🐶🐶🐶🐶Finished Reading rooms_channel.js....')
 
 // function subscribe (room_id) {
 //   console.log('subscribe', room_id)
